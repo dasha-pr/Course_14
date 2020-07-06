@@ -123,7 +123,7 @@
             this.button1.TabIndex = 8;
             this.button1.Text = "Найти";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.Search_Click);
             // 
             // button2
             // 
@@ -134,7 +134,7 @@
             this.button2.TabIndex = 9;
             this.button2.Text = "Назад";
             this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.HomePage_Click);
             // 
             // Search
             // 

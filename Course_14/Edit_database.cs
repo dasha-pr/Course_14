@@ -12,7 +12,7 @@ namespace Course_14
 {
     public partial class Edit_database : Form
     {
-        /*На данной странице вам будет видна полная информация об абонентах и номерах.*/
+        /*полная информация об абонентах и номерах.*/
         public Edit_database()
         {
             InitializeComponent();
@@ -26,7 +26,6 @@ namespace Course_14
 
             if(Database.size > 0)
             {
-                //при загрузке формы появиться полный список абонентов и номеров, которые храняться в базе данных;
                 for(int i = 0; i < Database.size; i++)
                 {
                     //если все данные пусты кроме номера - номер свободен;
@@ -36,7 +35,7 @@ namespace Course_14
                         count++;
                     }
 
-                    //в противном случае либо вся информация присутствует, либо она удалена совсем;
+                    
                     if(Database.phone_number[i] != null && Database.surname[i] != null)
                     {
                         richTextBox1.Text += ($"Абонент номер {i + 1}:\n");
@@ -64,14 +63,14 @@ namespace Course_14
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void HomePage_Click(object sender, EventArgs e)
         {
             this.Hide();
             Home_page home_page = new Home_page();
             home_page.Show();
         }
         //мы не можем изменять и удалять данные пока не добавим хотя-бы одного абонента;
-        private void button2_Click(object sender, EventArgs e)
+        private void Delete_Click(object sender, EventArgs e)
         {
             if (Database.size > 0)
             {
@@ -84,7 +83,7 @@ namespace Course_14
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void Edit_Click(object sender, EventArgs e)
         {
             if (Database.size > 0)
             {

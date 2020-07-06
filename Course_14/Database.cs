@@ -8,7 +8,7 @@ namespace Course_14
 {
     class Database
     {
-        //здесь храниться вся информация об абонентах;
+        //вся информация об абонентах;
         public static int size, count;
         public static string password;
         public static string[] phone_number = new string[size];
@@ -17,4 +17,5 @@ namespace Course_14
         public static string[] patronymic = new string[size];
         public static string[] address = new string[size];
     }
+    
 }

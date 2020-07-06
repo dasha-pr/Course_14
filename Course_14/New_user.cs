@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Course_14
 {
-    /*На данной странице вы можете добавить в базу данных
+    /*На данной странице можно добавить в базу данных
       как нового абонента, так и свободный номер.*/
     public partial class New_user : Form
     {
@@ -25,14 +25,14 @@ namespace Course_14
             this.CenterToScreen();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void HomePage_Click(object sender, EventArgs e)
         {
             this.Hide();
             Home_page home_page = new Home_page();
             home_page.Show();       
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Save_Click(object sender, EventArgs e)
         {
             string number, name, surname, patronymic, address;
             int count = 0;
@@ -43,19 +43,19 @@ namespace Course_14
             patronymic = textBox4.Text;
             address = textBox5.Text;
 
-            //данные о новом абоненте не могут совпадать с данными других абонентов базы данных;
+            //данные о новом абоненте не могут совпадать с данными других абонентов базы данных
             if(Database.size > 0)
             {
                 for(int i = 0; i < Database.size; i++)
                 {
-                    if((number != null && number == Database.phone_number[i]) || (surname != null && surname == Database.surname[i]) || (name != null && name == Database.name[i]) || (patronymic != null && patronymic == Database.patronymic[i]) || (address != null && address == Database.address[i]))
+                    if((number != null && number == Database.phone_number[i]) || (surname != null && surname.ToLower() == Database.surname[i].ToLower()) || (name != null && name == Database.name[i]) || (patronymic != null && patronymic == Database.patronymic[i]) || (address != null && address == Database.address[i]))
                     {
                         count++;
                         break;
                     }
                 }
             }
-            //если данные не совпадают - проверяем, введена ли вся информация или только номер;
+            //если данные не совпадают - проверяем
             if (count == 0)
             {
                 if (number.Length > 9 && number.Length < 14 && (name.Length < 3 || surname.Length < 3 || patronymic.Length < 3 || address.Length < 3))
@@ -80,7 +80,7 @@ namespace Course_14
                 }
                 else
                 {
-                    //если же введена вся информация - проверяем ее корректность;
+                    //проверяем корректность;
                     if (number.Length > 9 && number.Length < 14 && name.Length >= 3 && surname.Length >= 3 && patronymic.Length >= 3 && address.Length >= 3)
                     {
                         DialogResult result = MessageBox.Show("Все данные введены корректно. В вашем случае вы сохраните полную информацию о пользователе. Если вас все устраивает - нажмите Да. Если же вы хотите добавить только номер - нажмите Нет и сделайте все данные кроме номера длинной менее 3 символов. Номер в дальнейшем можно будет присвоить другому пользователю", " ", MessageBoxButtons.YesNo);
@@ -101,7 +101,6 @@ namespace Course_14
                                 Database.patronymic[i] = patronymic;
                                 Database.address[i] = address;
                             }
-
                             MessageBox.Show("Все данные сохранены!");
                         }
                     }

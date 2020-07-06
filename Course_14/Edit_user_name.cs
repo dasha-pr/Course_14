@@ -22,12 +22,12 @@ namespace Course_14
             InitializeComponent();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Close_Click(object sender, EventArgs e)
         {
             this.Hide();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Save_Click(object sender, EventArgs e)
         {
             string number, name, surname, patronymic, address;
             int user_number;
@@ -46,7 +46,7 @@ namespace Course_14
                 //после изменения данные не могут повторяться с другими в базе данных;
                 for (int i = 0; i < Database.size; i++)
                 {
-                    if ((number != null && number == Database.phone_number[i]) || (surname != null && surname == Database.surname[i]) || (name != null && name == Database.name[i]) || (patronymic != null && patronymic == Database.patronymic[i]) || (address != null && address == Database.address[i]))
+                    if ((number != null && number == Database.phone_number[i]) || (surname != null && surname.Equals(Database.surname[i])) || (name != null && name.Equals(Database.name[i])) || (patronymic != null && patronymic.Equals(Database.patronymic[i])) || (address != null && address.Equals(Database.address[i])))
                     {
                         count++;
                         break;
@@ -72,13 +72,13 @@ namespace Course_14
                         OpenFileDialog open = new OpenFileDialog();
                         open.Filter = "Password(*.txt) | *.txt";
 
-                        //пароль для изменения должен быть выбран из файла;
+                        //пароль для изменения должен быть выбран из файла
                         if (open.ShowDialog() == DialogResult.OK)
                         {
                             string file_name = open.FileName;
                             FileStream file = new FileStream(file_name, FileMode.Open, FileAccess.Read);
 
-                            //если пароль считывается впервые и его длина составляет хотя-бы один символ - изменяем все данные и сохраняем пароль в глобальную переменную;
+                            //если пароль считывается впервые и его длина составляет > 2 символов - изменяем все данные и сохраняем пароль в глобальную переменную
                             if (Database.count == 0)
                             { 
                                 string fileText = File.ReadAllText(file_name);
@@ -150,8 +150,8 @@ namespace Course_14
             this.CenterToScreen();
         }
 
-        //пароль нельзя меня пока он не разу не был считан;
-        private void button3_Click(object sender, EventArgs e)
+        //пароль нельзя менять пока он не разу не был считан
+        private void EditPassword_Click(object sender, EventArgs e)
         {
             if(Database.password != null)
             {

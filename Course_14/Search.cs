@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Course_14
 {
-    //На данной странице вы можете найти информацию об абоненте по фамилии либо номеру;
+    //на данной странице вы можете найти информацию об абоненте по фамилии либо номеру
     public partial class Search : Form
     {
         public Search()
@@ -24,14 +24,14 @@ namespace Course_14
             this.CenterToScreen();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void HomePage_Click(object sender, EventArgs e)
         {
             this.Hide();
             Home_page home_page = new Home_page();
             home_page.Show();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Search_Click(object sender, EventArgs e)
         {
             if (Database.size == 0)
             {
@@ -50,13 +50,12 @@ namespace Course_14
                     MessageBox.Show("Поиск возможен только по одному критерию");
                 }
                 else
-                {
-                    //если длина номера корректна - выполняем данное условие;
+                {      
                     if(phone.Length > 9 && phone.Length < 14)
                     {
                         for(int i = 0; i < Database.size; i++)
                         {
-                            if (phone == Database.phone_number[i] && Database.surname[i] != null)
+                            if (Database.phone_number[i].Contains(phone) && Database.surname[i] != null)
                             {
                                 richTextBox1.Text += ($"Абонент номер {i + 1}:\n");
                                 richTextBox1.Text += ($"Имя: {Database.name[i]}\n");

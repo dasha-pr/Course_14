@@ -12,9 +12,6 @@ namespace Course_14
 {
     public partial class Assign_number : Form
     {
-        /*На данной странице можно переназначить свободный номер
-          другому пользователю. Номер можно переназначить только абоненту,
-          о котором известна вся информация а не только номер.*/
         public Assign_number()
         {
             InitializeComponent();
@@ -25,7 +22,7 @@ namespace Course_14
             this.CenterToScreen();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void assign_Click(object sender, EventArgs e)
         {
             int assignable, assigned, count = 0;
 
@@ -38,10 +35,10 @@ namespace Course_14
                 assignable -= 1;
                 assigned -= 1;
 
-                //ищем совпадения по индексу в базе данных - если под индексом храниться только номер, то идем дальше;
+                //ищем совпадения по индексу в базе данных - если под индексом хранится только номер, то идем дальше;
                 for (int i = 0; i < Database.size; i++)
                 {
-                    if (assignable == i && Database.phone_number[i] != null && Database.surname[i] == null)
+                    if (assignable == i && Database.phone_number[i] != null && Database.surname[i].Equals(null))
                     {
                         count++;
                         break;
@@ -78,7 +75,7 @@ namespace Course_14
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void exit_Click(object sender, EventArgs e)
         {
             this.Hide();
             Edit_user_data edit_User_Data = new Edit_user_data();

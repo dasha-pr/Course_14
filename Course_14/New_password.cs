@@ -35,14 +35,14 @@ namespace Course_14
 
             password = textBox1.Text;
 
-            if (password.Length > 0)
+            if (password.Length > 1)
             {
                 SaveFileDialog save = new SaveFileDialog();
                 save.Filter = "Password(*.txt) | *.txt";
 
                 if (save.ShowDialog() == DialogResult.OK)
                 {
-                    //Если пароль длинной хотя-бы один символ - сохраняем его как в переменную, так и в файл;
+                    //Если пароль длинной хотя-бы два символа - сохраняем его как в переменную, так и в файл;
                     string filename = save.FileName; 
                     File.WriteAllText(filename, textBox1.Text);
                     Database.password = password;
@@ -51,7 +51,7 @@ namespace Course_14
             }
             else
             {
-                MessageBox.Show("Пароль должен быть длинной минимум один символ");
+                MessageBox.Show("Пароль должен быть длинной минимум два символа");
             }
         }
     }

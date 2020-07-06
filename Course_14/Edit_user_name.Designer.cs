@@ -175,7 +175,7 @@
             this.button1.TabIndex = 13;
             this.button1.Text = "Сохранить";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.Save_Click);
             // 
             // button2
             // 
@@ -187,7 +187,7 @@
             this.button2.TabIndex = 14;
             this.button2.Text = "Закрыть";
             this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.Close_Click);
             // 
             // textBox7
             // 
@@ -217,7 +217,7 @@
             this.button3.TabIndex = 17;
             this.button3.Text = "Изменить пароль";
             this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button3.Click += new System.EventHandler(this.EditPassword_Click);
             // 
             // Edit_user_name
             // 

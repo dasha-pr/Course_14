@@ -12,8 +12,6 @@ namespace Course_14
 {
     public partial class Delete_information : Form
     {
-        /*Здесь можно удалить пустой номер либо полную
-          информацию о пользователе из базы данных.*/
         public Delete_information()
         {
             InitializeComponent();
@@ -42,7 +40,7 @@ namespace Course_14
 
                 for(int i = 0; i < Database.size; i++)
                 {
-                    //если под вводимым индексом не храниться пустая строка, то информацию можно удалить;
+                    //если под вводимым индексом не хранится пустая строка, то информацию можно удалить;
                     if(delete_number == i && Database.phone_number[i] != null)
                     {
                         //удаляем нужную информацию в зависимости от того свободный ли номер;
